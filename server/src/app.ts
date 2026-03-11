@@ -5,6 +5,9 @@ dotenv.config()
 // import authRoutes from "./routes/auth.routes";
 import categoryRoutes from "./routes/category.routes";
 import productRoutes from "./routes/product.routes";
+import cartRoutes from './routes/cart.routes';
+import wishlistRoutes from './routes/wishlist.routes';
+import orderRoutes from './routes/order.routes';
 const app = express()
 
 /* =====================
@@ -40,6 +43,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/categories", categoryRoutes);
 app.use("/api", productRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/orders', orderRoutes);
 
 // example
 // import authRoutes from "./routes/auth.routes"
