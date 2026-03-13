@@ -27,7 +27,17 @@ const config: Config = {
         foreground: "oklch(var(--foreground))",
 
         primary: {
-          DEFAULT: "oklch(var(--primary))",
+          DEFAULT: '#02b290',
+          50: '#e6f9f4',
+          100: '#ccf3e9',
+          200: '#99e7d3',
+          300: '#66dbbd',
+          400: '#33cfa7',
+          500: '#02b290',
+          600: '#029a7d',
+          700: '#01826a',
+          800: '#016a57',
+          900: '#015244',
           foreground: "oklch(var(--primary-foreground))",
         },
 
@@ -50,6 +60,9 @@ const config: Config = {
           DEFAULT: "oklch(var(--card))",
           foreground: "oklch(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
       },
     },
   },
