@@ -1,17 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import ProductDetails from "./features/products/pages/ProductDetailsPage"
-import ProductsPage from "./features/products/pages/ProductsPage"
-
+import Navbar from "./layout/Navbar";
+import Footer from "./layout/Footer";
+import AppRouter from "./routes/AppRouter";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
-      </Routes>
-    </Router>
-  )
-}
+    <div className="min-h-screen flex flex-col">
 
-export default App
+      <Navbar />
+
+      <main className="flex-1">
+        <AppRouter />
+      </main>
+
+      <Footer />
+
+    </div>
+  );
+};
+
+export default App;
