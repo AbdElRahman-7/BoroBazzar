@@ -57,6 +57,7 @@ export const loginUser = async (email: string, password: string) => {
 //   }
 // }
 
+/*
 export const forgotPassword = async (email: string) => {
 
   const user = await userModel.findOne({ email });
@@ -126,3 +127,4 @@ export const resetPassword = async (
     message: "Password reset successfully"
   };
 };
+*/

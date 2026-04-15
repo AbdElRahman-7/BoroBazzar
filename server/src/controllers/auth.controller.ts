@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { registerUser, loginUser, forgotPassword, verifyOtp, resetPassword } from "../services/auth.service";
+import { registerUser, loginUser/*, forgotPassword, verifyOtp, resetPassword*/ } from "../services/auth.service";
 
 
 export const register = async (req: Request, res: Response) => {
@@ -44,6 +44,7 @@ export const login = async (req: Request, res: Response) => {
 
 
 
+/*
 export const forgotPasswordController = async (req: Request, res: Response) => {
   try {
 
@@ -112,3 +113,4 @@ export const resetPasswordController = async (req: Request, res: Response) => {
 
   }
 };
+*/
