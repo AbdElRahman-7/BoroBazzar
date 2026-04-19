@@ -54,11 +54,11 @@ export default function ProductCard({ product }: { product: IProduct }) {
             <div className="flex items-center gap-0.5 text-yellow-400 py-1">
               {/* full stars */}
               {[...Array(5)].map((_, i) => (
-                <Star 
-                  key={i} 
-                  size={14} 
-                  fill={i < fullStars ? "currentColor" : "none"} 
-                  className={i < fullStars ? "" : "text-gray-200"} 
+                <Star
+                  key={i}
+                  size={14}
+                  fill={i < fullStars ? "currentColor" : "none"}
+                  className={i < fullStars ? "" : "text-gray-200"}
                 />
               ))}
               <span className="text-[10px] text-gray-400 ml-1.5 font-medium">({product.reviewsCount || 0})</span>
@@ -74,10 +74,10 @@ export default function ProductCard({ product }: { product: IProduct }) {
                   </span>
                 )}
               </div>
-              
+
               {product.oldPrice && (
                 <Badge variant="outline" className="text-[10px] border-emerald-100 text-emerald-700 bg-emerald-50/50 font-bold">
-                  Save ${ (product.oldPrice - product.price).toFixed(2) }
+                  Save ${(product.oldPrice - product.price).toFixed(2)}
                 </Badge>
               )}
             </div>
