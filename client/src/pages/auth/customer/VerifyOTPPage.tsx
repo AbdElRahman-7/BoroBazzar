@@ -21,9 +21,18 @@ const VerifyOTPPage = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: verifyOTP,
     onSuccess: () => {
-      setServerSuccess("Email verified successfully!");
-      setTimeout(() => navigate("/login"), 1500);
+      setServerSuccess("OTP verified successfully!");
+      const source = (location.state as any)?.source;
+
+      setTimeout(() => {
+        if (source === "forgot-password") {
+          navigate("/reset-password", { state: { email } });
+        } else {
+          navigate("/login");
+        }
+      }, 1500);
     },
+
     onError: (error: any) => {
       const msg = error?.response?.data?.message || "Invalid or expired OTP.";
       setServerError(msg);

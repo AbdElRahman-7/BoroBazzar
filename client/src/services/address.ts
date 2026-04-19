@@ -4,16 +4,13 @@ import type { IAddress, AddressFormData } from "../types/address";
 const BASE = "/addresses";
 
 export const addressService = {
-  getAll: async (userId?: string): Promise<IAddress[]> => {
-    const res = await api.get(BASE, {
-      params: userId ? { userId } : undefined
-    });
-    return res.data.data || res.data;
+  getAll: async (): Promise<IAddress[]> => {
+    const res = await api.get(BASE);
+    return res.data.data;
   },
 
   add: async (data: AddressFormData): Promise<IAddress> => {
-    const userId = localStorage.getItem("userId");
-    const res = await api.post(BASE, { ...data, userId });
+    const res = await api.post(BASE, data);
     return res.data.data;
   },
 
@@ -25,4 +22,4 @@ export const addressService = {
   remove: async (id: string): Promise<void> => {
     await api.delete(`${BASE}/${id}`);
   },
-};
+};

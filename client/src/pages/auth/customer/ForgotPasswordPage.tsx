@@ -27,7 +27,7 @@ const ForgotPasswordPage = () => {
     onSuccess: () => {
       setSuccessMsg("OTP sent! Check your inbox.");
       setTimeout(() => {
-        navigate("/verify", { state: { email: getValues("email") } });
+        navigate("/verify", { state: { email: getValues("email"), source: "forgot-password" } });
       }, 1500);
     },
     onError: (error: any) => {

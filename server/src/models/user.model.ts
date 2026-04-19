@@ -1,54 +1,60 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface IUser extends Document {
-    name: string;
-    email: string;
-    password: string;
-    image?: string;
-    phone?: string;
-    role: "user" | "admin";
-    otp?: string;
-    otpExpires?: Date;
+  name: string;
+  email: string;
+  password: string;
+  image?: string;
+  phone?: string;
+  role: "user" | "admin";
+  otp?: string;
+  otpExpires?: Date;
+  isVerified: boolean;
 }
 
 
-
-
-const userSchema = new Schema<IUser>({
+const userSchema = new Schema<IUser>(
+  {
     name: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true,
-        unique: true,
+      type: String,
+      required: true,
+      unique: true,
     },
     password: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     image: {
-        type: String,
-        default: ""
+      type: String,
+      default: "",
     },
     phone: {
-        type: String,
+      type: String,
     },
     role: {
-        type: String,
-        enum: ["user", "admin"],
-        default: "user",
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
     },
-    otp:{
-        type: String,
+    otp: {
+      type: String,
     },
-    otpExpires:{
-        type: Date,
-    }
-}, {
+    otpExpires: {
+      type: Date,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+
+  },
+  {
     timestamps: true,
-});
+  },
+);
 
-
-export default mongoose.model<IUser>('User', userSchema);
+export default mongoose.model<IUser>("User", userSchema);

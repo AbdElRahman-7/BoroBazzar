@@ -31,7 +31,7 @@ export default function ChangePassword() {
     setLoading(true);
     try {
       await api.put(
-        "/user/change-password",
+        "/users/change-password",
         { oldPassword: form.oldPassword, newPassword: form.newPassword }
       );
       setMessage({ type: "success", text: "Password changed successfully!" });

@@ -12,6 +12,7 @@ import ProductDetails from "@/features/products/pages/ProductDetailsPage";
 import LoginPage from "../pages/auth/customer/LoginPage";
 import RegisterPage from "../pages/auth/customer/RegisterPage";
 import ForgotPasswordPage from "../pages/auth/customer/ForgotPasswordPage";
+import ResetPasswordPage from "../pages/auth/customer/ResetPasswordPage";
 import VerifyOTPPage from "../pages/auth/customer/VerifyOTPPage";
 
 // ─── Admin Auth ──────────────────────────────────────────
@@ -47,6 +48,7 @@ const AppRouter = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/verify" element={<VerifyOTPPage />} />
 
       {/* ─── Admin Auth Routes ─── */}

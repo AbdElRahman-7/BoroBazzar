@@ -22,7 +22,7 @@ export default function MyProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await api.get("/user/profile");
+        const res = await api.get("/users/profile");
         const data = res.data.data;
         setProfile({
           name: data.name || "",
@@ -49,7 +49,7 @@ export default function MyProfile() {
     setMessage(null);
     try {
       await api.put(
-        "/user/profile",
+        "/users/profile",
         { name: profile.name, phone: profile.phone, avatar: profile.avatar }
       );
       setMessage({ type: "success", text: "Profile updated successfully!" });
