@@ -20,6 +20,12 @@ import AdminRegisterPage from "../pages/auth/admin/RegisterPage";
 import AdminForgotPasswordPage from "../pages/auth/admin/ForgotPasswordPage";
 import AdminVerifyOTPPage from "../pages/auth/admin/VerifyOTPPage";
 
+// ─── profile ──────────────────────────────────────────
+import ProfilePage from "../pages/Profilepage";
+
+// ─── Address ──────────────────────────────────────────
+import AddressPage from "../pages/AddressPage";
+
 const AppRouter = () => {
   return (
     <Routes>
@@ -42,6 +48,10 @@ const AppRouter = () => {
       <Route path="/admin/register" element={<AdminRegisterPage />} />
       <Route path="/admin/forgot-password" element={<AdminForgotPasswordPage />} />
       <Route path="/admin/verify" element={<AdminVerifyOTPPage />} />
+
+      {/* ─── Profile Routes ─── */}
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/address" element={<AddressPage />} />
 
       {/* ─── Fallback ─── */}
       <Route path="*" element={<Navigate to="/" replace />} />
