@@ -5,19 +5,16 @@ import {
   updateAddress,
   deleteAddress,
 } from "../controllers/address.controller";
+import { authMiddleware } from "../middlewares/auth.middleware"; // ✅ Auth middleware added
 
 const router = express.Router();
 
-// POST /api/addresses - Add a new address
+// ✅ All routes are protected — unauthenticated requests are rejected before reaching controllers
+router.use(authMiddleware);
+
 router.post("/", addAddress);
-
-// GET /api/addresses - Get all addresses (optionally filtered by userId)
 router.get("/", getAddresses);
-
-// PUT /api/addresses/:id - Update an address
 router.put("/:id", updateAddress);
-
-// DELETE /api/addresses/:id - Delete an address
 router.delete("/:id", deleteAddress);
 
 export default router;

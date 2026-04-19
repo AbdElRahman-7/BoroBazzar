@@ -4,9 +4,9 @@ import { registerUser, loginUser/*, forgotPassword, verifyOtp, resetPassword*/ }
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
 
-    const user = await registerUser(name, email, password);
+    const user = await registerUser(name, email, password, phone);
 
     res.status(201).json({
       success: true,

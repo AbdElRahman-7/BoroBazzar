@@ -4,14 +4,20 @@ import jwt from 'jsonwebtoken';
 import { geenerateOTP } from '../utils/generateOtp';
 
 
-export const registerUser = async (name: string, email: string, password: string) => {
+export const registerUser = async (name: string, email: string, password: string, phone?: string) => {
     const existinguser = await userModel.findOne({ email });
     if (existinguser) {
         throw new Error('User already exists');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await userModel.create({ name, email, password: hashedPassword });
+    const user = await userModel.create({ 
+        name, 
+        email, 
+        password: hashedPassword,
+        phone,
+        role: "user" // Default role
+    });
     return user;
 }
 
@@ -30,7 +36,7 @@ export const loginUser = async (email: string, password: string) => {
   }
 
   const token = jwt.sign(
-    { userId: user._id },
+    { userId: user._id, role: user.role },
     process.env.JWT_SECRET as string,
     { expiresIn: "7d" }
   );
