@@ -1,5 +1,6 @@
-import { api } from "@/services/axios";
+import { api } from "../../../services/axios";
 import type { IProduct } from "../../../types/product";
+
 export interface ApiResponse<T> {
   success: boolean;
   data: T;

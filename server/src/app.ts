@@ -8,6 +8,7 @@ import productRoutes from "./routes/product.routes";
 import cartRoutes from './routes/cart.routes';
 import wishlistRoutes from './routes/wishlist.routes';
 import orderRoutes from './routes/order.routes';
+import addressRoutes from './routes/address.routes';
 const app = express()
 
 /* =====================
@@ -16,7 +17,7 @@ const app = express()
 
 app.use(cors(
   {
-    origin: "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
     credentials: true
   }
 ))
@@ -46,6 +47,7 @@ app.use("/api", productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/addresses', addressRoutes);
 
 // example
 // import authRoutes from "./routes/auth.routes"

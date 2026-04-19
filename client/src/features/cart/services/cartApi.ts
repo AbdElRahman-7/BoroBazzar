@@ -1,18 +1,18 @@
-import axios from "axios"
+import { api } from "../../../services/axios"
 import type { CartItemType } from './../types/cart.types';
 
 
 export const getCart = async (): Promise<CartItemType[]> => {
-  const res = await axios.get("/api/cart")
+  const res = await api.get("/cart")
   return res.data
 }
 
 export const removeItem = async (id:number)=>{
-  return axios.delete(`/api/cart/${id}`)
+  return api.delete(`/cart/${id}`)
 }
 
 export const updateQuantity = async (id:number,quantity:number)=>{
-  return axios.patch(`/api/cart/${id}`,{quantity})
+  return api.patch(`/cart/${id}`,{quantity})
 }
 
 // GET /cart

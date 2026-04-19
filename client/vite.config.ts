@@ -5,12 +5,16 @@ import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), tailwindcss()],
-server: {
-  proxy: {
-    "/api": {
-      target: "https://borobazzar.onrender.com",
-      changeOrigin: true,
+  server: {
+    proxy: {
+      "/api": {
+        target: process.env.VITE_API_PROXY_URL || "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      },
     },
   },
-}
 })
