@@ -19,6 +19,8 @@ import AdminLoginPage from "../pages/auth/admin/LoginPage";
 import AdminRegisterPage from "../pages/auth/admin/RegisterPage";
 import AdminForgotPasswordPage from "../pages/auth/admin/ForgotPasswordPage";
 import AdminVerifyOTPPage from "../pages/auth/admin/VerifyOTPPage";
+import OrdersPage from "@/features/orders/pages/OrdersPage";
+import OrderDetailsPage from "@/features/orders/pages/OrderDetailsPage";
 
 // ─── profile ──────────────────────────────────────────
 import ProfilePage from "../pages/Profilepage";
@@ -34,6 +36,10 @@ const AppRouter = () => {
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/:id" element={<ProductDetails />} />
+      <Route path="/orders" element={<OrdersPage />} />
+      <Route path="/orders/:id" element={<OrderDetailsPage />} />
+
+
       <Route path="/cart" element={<CartPage />} />
       <Route path="/wishlist" element={<WishlistPage />} />
 
