@@ -9,6 +9,8 @@ import cartRoutes from './routes/cart.routes';
 import wishlistRoutes from './routes/wishlist.routes';
 import orderRoutes from './routes/order.routes';
 import addressRoutes from './routes/address.routes';
+import userRoutes from './routes/user.routes';
+import adminRoutes from './routes/admin.routes';
 const app = express()
 
 /* =====================
@@ -48,6 +50,18 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/addresses', addressRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
+
+/* =====================
+   404 Not Found Handler
+===================== */
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.originalUrl}`
+  });
+});
 
 // example
 // import authRoutes from "./routes/auth.routes"
