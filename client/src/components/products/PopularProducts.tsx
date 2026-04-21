@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import ProductCard from "./ProductCard";
 import { getPopularProducts } from "../../services/productService";
 import type { Product } from "../../types/product";
+import { data } from "react-router-dom";
 
 const CATEGORIES = [
   "Breads & Bakery",
@@ -17,14 +18,20 @@ export default function PopularProducts() {
   const [loading, setLoading] = useState(true);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    getPopularProducts()
-      .then((data) => setProducts(data))
-      .catch(() => {
-        setProducts(getMockPopularProducts());
-      })
-      .finally(() => setLoading(false));
-  }, []);
+useEffect(() => {
+  getPopularProducts()
+    .then((data) => {
+      if (!data || data.length === 0) {
+        throw new Error("Empty or invalid data");
+      }
+      setProducts(data);
+    })
+    .catch((err) => {
+      console.warn("Using Mock Data:", err.message);
+      setProducts(getMockPopularProducts());
+    })
+    .finally(() => setLoading(false));
+}, []);
 
   const scrollSlider = (direction: "left" | "right") => {
     if (sliderRef.current) {
