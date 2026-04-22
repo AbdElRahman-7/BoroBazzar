@@ -9,25 +9,25 @@ import ProductsPage from "@/features/products/pages/ProductsPage";
 import ProductDetails from "@/features/products/pages/ProductDetailsPage";
 
 // ─── Customer Auth ───────────────────────────────────────
-import LoginPage from "../pages/auth/customer/LoginPage";
-import RegisterPage from "../pages/auth/customer/RegisterPage";
-import ForgotPasswordPage from "../pages/auth/customer/ForgotPasswordPage";
-import ResetPasswordPage from "../pages/auth/customer/ResetPasswordPage";
-import VerifyOTPPage from "../pages/auth/customer/VerifyOTPPage";
+import LoginPage from "../features/auth/pages/customer/LoginPage";
+import RegisterPage from "../features/auth/pages/customer/RegisterPage";
+import ForgotPasswordPage from "../features/auth/pages/customer/ForgotPasswordPage";
+import ResetPasswordPage from "../features/auth/pages/customer/ResetPasswordPage";
+import VerifyOTPPage from "../features/auth/pages/customer/VerifyOTPPage";
 
 // ─── Admin Auth ──────────────────────────────────────────
-import AdminLoginPage from "../pages/auth/admin/LoginPage";
-import AdminRegisterPage from "../pages/auth/admin/RegisterPage";
-import AdminForgotPasswordPage from "../pages/auth/admin/ForgotPasswordPage";
-import AdminVerifyOTPPage from "../pages/auth/admin/VerifyOTPPage";
+import AdminLoginPage from "../features/auth/pages/admin/LoginPage";
+import AdminRegisterPage from "../features/auth/pages/admin/RegisterPage";
+import AdminForgotPasswordPage from "../features/auth/pages/admin/ForgotPasswordPage";
+import AdminVerifyOTPPage from "../features/auth/pages/admin/VerifyOTPPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
 import OrderDetailsPage from "@/features/orders/pages/OrderDetailsPage";
 
 // ─── profile ──────────────────────────────────────────
-import ProfilePage from "../pages/Profilepage";
+import ProfilePage from "../features/profile/pages/Profilepage";
 
 // ─── Address ──────────────────────────────────────────
-import AddressPage from "../pages/AddressPage";
+import AddressPage from "../features/address/pages/AddressPage";
 
 const AppRouter = () => {
   return (

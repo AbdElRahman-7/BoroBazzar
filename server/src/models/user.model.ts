@@ -6,6 +6,7 @@ export interface IUser extends Document {
   password: string;
   image?: string;
   phone?: string;
+  dialCode?: string;
   role: "user" | "admin";
   otp?: string;
   otpExpires?: Date;
@@ -34,6 +35,10 @@ const userSchema = new Schema<IUser>(
     },
     phone: {
       type: String,
+    },
+    dialCode: {
+      type: String,
+      default: "+91",
     },
     role: {
       type: String,
