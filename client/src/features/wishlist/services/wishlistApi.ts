@@ -1,15 +1,17 @@
-import axios from "axios"
+import { api } from "../../../services/axios"
 import type { WishlistItemType } from "../types/wishlist.types"
 
-
 export const getWishlist = async (): Promise<WishlistItemType[]> => {
-  const res = await axios.get("/api/wishlist")
-  return res.data
+  const res = await api.get("/wishlist")
+  return res.data.products || [];
 }
 
-export const addWishlist = async (id:number)=>{
-  return axios.post(`/api/wishlist`, { id })
+export const toggleWishlist = async (productId: string) => {
+  const res = await api.post("/wishlist", { productId });
+  return res.data;
 }
 
-// GET /wishlist
-// POST /wishlist
+export const removeWishlist = async (productId: string) => {
+  const res = await api.delete(`/wishlist/${productId}`);
+  return res.data;
+}

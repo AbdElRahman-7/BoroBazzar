@@ -1,15 +1,19 @@
 import { Router } from 'express';
 import { toggleWishlist, getWishlist, removeFromWishlist } from '../controllers/wishlist.controller';
+import { authMiddleware } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-// POST http://localhost:5000/api/wishlist/toggle
-router.post('/toggle', toggleWishlist);
+// Apply auth protection to all wishlist routes
+router.use(authMiddleware);
 
-// GET http://localhost:5000/api/wishlist/:userId
-router.get('/:userId', getWishlist);
+// POST http://localhost:5000/api/wishlist  (Toggle)
+router.post('/', toggleWishlist);
 
-// DELETE http://localhost:5000/api/wishlist/:userId/:productId
-router.delete('/:userId/:productId', removeFromWishlist);
+// GET http://localhost:5000/api/wishlist
+router.get('/', getWishlist);
 
-export default router;
+// DELETE http://localhost:5000/api/wishlist/:productId
+router.delete('/:productId', removeFromWishlist);
+
+export default router;

@@ -25,8 +25,11 @@ export const createProduct = async (req: Request, res: Response) => {
       oldPrice: req.body.oldPrice,
       rating: req.body.rating,
       category: req.body.category,
-      isFeatured: req.body.isFeatured,
-      isPopular: req.body.isPopular
+      brand: req.body.brand,
+      subCategory: req.body.subCategory,
+      stock: req.body.stock,
+      isFeatured: req.body.isFeatured === "true" || req.body.isFeatured === true,
+      isPopular: req.body.isPopular === "true" || req.body.isPopular === true
     });
     res.status(201).json({
       success: true,

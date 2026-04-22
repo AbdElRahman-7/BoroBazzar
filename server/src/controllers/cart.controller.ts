@@ -1,9 +1,11 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { AuthRequest } from '../middlewares/auth.middleware';
 import Cart from '../models/Cart.model';
 
-export const addToCart = async (req: Request, res: Response) => {
+export const addToCart = async (req: AuthRequest, res: Response) => {
   try {
-    const { userId, productId, quantity, price } = req.body;
+    const userId = req.user?.userId;
+    const { productId, quantity, price } = req.body;
 
     let cart = await Cart.findOne({ userId });
 
@@ -38,9 +40,9 @@ export const addToCart = async (req: Request, res: Response) => {
 };
 
 
-export const getCart = async (req: Request, res: Response) => {
+export const getCart = async (req: AuthRequest, res: Response) => {
   try {
-    const { userId } = req.params;
+    const userId = req.user?.userId;
    
     const cart = await Cart.findOne({ userId }).populate('items.productId');
     
@@ -51,9 +53,10 @@ export const getCart = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteFromCart = async (req: Request, res: Response) => {
+export const deleteFromCart = async (req: AuthRequest, res: Response) => {
   try {
-    const { userId, productId } = req.params;
+    const userId = req.user?.userId;
+    const { productId } = req.params;
 
     const cart = await Cart.findOne({ userId });
     if (!cart) return res.status(404).json({ message: "Cart not found" });

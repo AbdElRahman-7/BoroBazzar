@@ -1,21 +1,31 @@
 import { Router } from "express";
-import { register, login/*, forgotPasswordController, verifyOtpController, resetPasswordController*/ } from "../controllers/auth.controller";
-
+import {
+  register,
+  login,
+  verifyOtpController,
+  forgotPasswordController,
+  verifyForgotPasswordOtpController,
+  resetPasswordController,
+} from "../controllers/auth.controller";
 
 const router = Router();
 
-// POST http://localhost:5000/api/auth/register
+// POST /api/auth/register  — creates account + sends OTP email
 router.post("/register", register);
 
-// POST http://localhost:5000/api/auth/login
+// POST /api/auth/login
 router.post("/login", login);
 
-// POST http://localhost:5000/api/auth/forgot-password
-// router.post("/forgot-password", forgotPasswordController);
+// POST /api/auth/verify-otp  — used after registration
+router.post("/verify-otp", verifyOtpController);
 
-// POST http://localhost:5000/api/auth/verify-otp
-// router.post("/verify-otp", verifyOtpController);
+// POST /api/auth/forgot-password  — sends OTP to email
+router.post("/forgot-password", forgotPasswordController);
 
-// POST http://localhost:5000/api/auth/reset-password
-// router.post("/reset-password", resetPasswordController);
+// POST /api/auth/verify-forgot-otp  — verifies OTP before reset
+router.post("/verify-forgot-otp", verifyForgotPasswordOtpController);
+
+// POST /api/auth/reset-password  — sets new password
+router.post("/reset-password", resetPasswordController);
+
 export default router;
