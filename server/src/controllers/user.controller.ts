@@ -17,10 +17,10 @@ export const getProfile = async (req: AuthRequest, res: Response) => {
 
 export const updateProfile = async (req: AuthRequest, res: Response) => {
   try {
-    const { name, phone, image } = req.body;
+    const { name, phone, dialCode, image } = req.body;
     const user = await User.findByIdAndUpdate(
       req.user?.userId,
-      { name, phone, image },
+      { name, phone, dialCode, image },
       { new: true, runValidators: true }
     ).select("-password");
 
