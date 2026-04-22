@@ -6,6 +6,8 @@ import mongoose from "mongoose"
 
 const PORT = process.env.PORT || 5000
 const MONGO_URI = process.env.MONGO_URI as string
+console.log("🔥 DB URI RAW:", process.env.MONGO_URI)
+console.log("🔍 MongoURI:", MONGO_URI)
 
 /* =====================
    Connect Database

@@ -7,7 +7,8 @@ import {
 export const createCategory = async (req: Request, res: Response) => {
   try {
     const { name } = req.body;
-    const image = req.file?.path || "";
+
+    const image = req.file?.path || req.body.image;
 
     const category = await createCategoryService({ name, image });
 
