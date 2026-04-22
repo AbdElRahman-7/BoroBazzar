@@ -11,7 +11,6 @@ export const createCategory = async (req: Request, res: Response) => {
     const image = req.file?.path || req.body.image;
 
     const category = await createCategoryService({ name, image });
-
     res.status(201).json({
       success: true,
       data: category,
