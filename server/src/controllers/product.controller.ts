@@ -15,22 +15,21 @@ import Product from "../models/Product.model";
 export const createProduct = async (req: Request, res: Response) => {
   try {
 
+const image = req.file?.path || req.body.image;
 
-    const image = req.file?.path;
-
-    const product = await Product.create({
-      name: req.body.name,
-      image: image,
-      price: req.body.price,
-      oldPrice: req.body.oldPrice,
-      rating: req.body.rating,
-      category: req.body.category,
-      brand: req.body.brand,
-      subCategory: req.body.subCategory,
-      stock: req.body.stock,
-      isFeatured: req.body.isFeatured === "true" || req.body.isFeatured === true,
-      isPopular: req.body.isPopular === "true" || req.body.isPopular === true
-    });
+const product = await Product.create({
+  name: req.body.name,
+  image: image,
+  price: req.body.price,
+  oldPrice: req.body.oldPrice,
+  rating: req.body.rating,
+  category: req.body.category,
+  brand: req.body.brand,
+  subCategory: req.body.subCategory,
+  stock: req.body.stock,
+  isFeatured: req.body.isFeatured === "true" || req.body.isFeatured === true,
+  isPopular: req.body.isPopular === "true" || req.body.isPopular === true
+});
     res.status(201).json({
       success: true,
       data: product
