@@ -18,7 +18,7 @@ export default function Home() {
         <TopCategories />
 
         {/* Popular Products Slider */}
-        <PopularProducts />
+        {/* <PopularProducts /> */}
 
         {/* Banner Grid (Optional/Future - shown in design but not requested yet) */}
 
