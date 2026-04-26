@@ -108,7 +108,7 @@ useEffect(() => {
             ))
             : products.map((product) => (
               <div
-                key={product.id}
+                key={product._id || product.id}
                 className="min-w-[220px] max-w-[240px] flex-shrink-0"
               >
                 <ProductCard product={product} />
@@ -122,7 +122,7 @@ useEffect(() => {
 
 function getMockPopularProducts(): Product[] {
   return Array.from({ length: 8 }).map((_, i) => ({
-    id: i + 1,
+    _id: (i + 1).toString(),
     name: "100 Percent Apple Juice – 64 fl oz Bottle",
     price: 25.99,
     oldPrice: 38.10,

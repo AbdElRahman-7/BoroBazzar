@@ -10,7 +10,7 @@ export const getFProducts = async () => {
       return [];
     }
     
-    return res.data;
+    return res.data.data;
   } catch (error) {
     throw error;
   }
@@ -25,7 +25,7 @@ export const getPopularProducts = async (): Promise<IProduct[]> => {
       return [];
     }
     
-    return response.data;
+    return response.data.data;
   } catch (error) {
     throw error;
   }
