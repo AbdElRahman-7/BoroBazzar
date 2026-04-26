@@ -28,11 +28,11 @@ import ProfilePage from "../features/profile/pages/Profilepage";
 
 // ─── Address ──────────────────────────────────────────
 import AddressPage from "../features/address/pages/AddressPage";
+import ProductListing from "@/features/product-listing/page/ProductListing";
 
 const AppRouter = () => {
   return (
     <Routes>
-
       {/* ─── Store Routes ─── */}
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<ProductsPage />} />
@@ -40,9 +40,10 @@ const AppRouter = () => {
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/orders/:id" element={<OrderDetailsPage />} />
 
-
       <Route path="/cart" element={<CartPage />} />
       <Route path="/wishlist" element={<WishlistPage />} />
+
+      <Route path="/products-listing" element={<ProductListing />} />
 
       {/* ─── Customer Auth Routes ─── */}
       <Route path="/login" element={<LoginPage />} />
@@ -54,7 +55,10 @@ const AppRouter = () => {
       {/* ─── Admin Auth Routes ─── */}
       <Route path="/admin/login" element={<AdminLoginPage />} />
       <Route path="/admin/register" element={<AdminRegisterPage />} />
-      <Route path="/admin/forgot-password" element={<AdminForgotPasswordPage />} />
+      <Route
+        path="/admin/forgot-password"
+        element={<AdminForgotPasswordPage />}
+      />
       <Route path="/admin/verify" element={<AdminVerifyOTPPage />} />
 
       {/* ─── Profile Routes ─── */}
@@ -63,7 +67,6 @@ const AppRouter = () => {
 
       {/* ─── Fallback ─── */}
       <Route path="*" element={<Navigate to="/" replace />} />
-
     </Routes>
   );
 };
