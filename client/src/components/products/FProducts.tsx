@@ -11,7 +11,6 @@ export default function FProducts() {
     getFProducts()
       .then((data) => setProducts(data))
       .catch(() => {
-        // Fallback mock data when API is unavailable
         setProducts(getMockFeaturedProducts());
       })
       .finally(() => setLoading(false));
