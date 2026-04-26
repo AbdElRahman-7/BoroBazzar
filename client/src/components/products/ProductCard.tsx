@@ -10,7 +10,7 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div
-      id={`product-card-${product.id}`}
+      id={`product-card-${product._id || product.id}`}
       className="product-card-shadow rounded-xl bg-white border border-gray-100 overflow-hidden group cursor-pointer h-full flex flex-col"
     >
       {/* Image Container */}
@@ -80,7 +80,7 @@ export default function ProductCard({ product }: Props) {
           </div>
 
           <button
-            id={`add-to-cart-${product.id}`}
+            id={`add-to-cart-${product._id || product.id}`}
             className="w-full btn-cart py-2 rounded-lg text-sm font-semibold transition-all border border-primary text-primary hover:bg-primary hover:text-white"
           >
             Add to Cart

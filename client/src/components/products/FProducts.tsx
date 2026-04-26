@@ -11,7 +11,6 @@ export default function FProducts() {
     getFProducts()
       .then((data) => setProducts(data))
       .catch(() => {
-        // Fallback mock data when API is unavailable
         setProducts(getMockFeaturedProducts());
       })
       .finally(() => setLoading(false));
@@ -67,7 +66,7 @@ export default function FProducts() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-5">
           {products.map((product, index) => (
             <div
-              key={product.id}
+              key={product._id || product.id}
               className="animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >

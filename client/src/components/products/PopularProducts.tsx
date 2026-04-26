@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import ProductCard from "./ProductCard";
 import { getPopularProducts } from "../../services/productService";
 import type { Product } from "../../types/product";
+import { data } from "react-router-dom";
 
 const CATEGORIES = [
   "Breads & Bakery",
@@ -17,14 +18,20 @@ export default function PopularProducts() {
   const [loading, setLoading] = useState(true);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    getPopularProducts()
-      .then((data) => setProducts(data))
-      .catch(() => {
-        setProducts(getMockPopularProducts());
-      })
-      .finally(() => setLoading(false));
-  }, []);
+useEffect(() => {
+  getPopularProducts()
+    .then((data) => {
+      if (!data || data.length === 0) {
+        throw new Error("Empty or invalid data");
+      }
+      setProducts(data);
+    })
+    .catch((err) => {
+      console.warn("Using Mock Data:", err.message);
+      setProducts(getMockPopularProducts());
+    })
+    .finally(() => setLoading(false));
+}, []);
 
   const scrollSlider = (direction: "left" | "right") => {
     if (sliderRef.current) {
@@ -101,7 +108,7 @@ export default function PopularProducts() {
             ))
             : products.map((product) => (
               <div
-                key={product.id}
+                key={product._id || product.id}
                 className="min-w-[220px] max-w-[240px] flex-shrink-0"
               >
                 <ProductCard product={product} />
@@ -115,7 +122,7 @@ export default function PopularProducts() {
 
 function getMockPopularProducts(): Product[] {
   return Array.from({ length: 8 }).map((_, i) => ({
-    id: i + 1,
+    _id: (i + 1).toString(),
     name: "100 Percent Apple Juice – 64 fl oz Bottle",
     price: 25.99,
     oldPrice: 38.10,

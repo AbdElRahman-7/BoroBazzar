@@ -18,12 +18,11 @@ const app = express();
    Middlewares
 ===================== */
 
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-  }),
-);
+ app.use(cors({
+   origin: ["http://localhost:3000", "http://localhost:5173", "https://borobazzar.onrender.com", process.env.CORS_ORIGIN].filter(Boolean) as string[],
+   credentials: true
+ }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
