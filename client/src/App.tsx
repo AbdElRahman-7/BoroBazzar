@@ -1,8 +1,8 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Navbar from "./layout/Navbar";
-import Footer from "./layout/Footer";
+import Nav from "./shared/components/layout/Nav"
+import Footer from "./shared/components/layout/Footer"
 import AppRouter from "./routes/AppRouter";
 
 const queryClient = new QueryClient();
@@ -12,7 +12,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       {/* <BrowserRouter> */}
         <div className="min-h-screen flex flex-col">
-          <Navbar />
+          <Nav />
 
           <main className="flex-1">
             <AppRouter />

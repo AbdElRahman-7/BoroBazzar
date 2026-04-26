@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import search from "../../assets/Icons/navbar/Search.png";
+import search from "@/assets/Icons/navbar/Search.png";
 
 function SearchBar() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function SearchBar() {
 
     params.set("q", query.trim());
 
-    navigate(`/products?${params.toString()}`);
+    navigate(`/products-listing?${params.toString()}`);
 
     setQuery("");
   }
