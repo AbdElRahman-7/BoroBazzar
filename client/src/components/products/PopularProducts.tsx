@@ -14,6 +14,7 @@ const CATEGORIES = [
 
 export default function PopularProducts() {
   const [products, setProducts] = useState<Product[]>([]);
+  console.log(products);
   const [activeCategory, setActiveCategory] = useState("Breads & Bakery");
   const [loading, setLoading] = useState(true);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -106,7 +107,7 @@ useEffect(() => {
                 className="min-w-[220px] aspect-[4/5] rounded-xl bg-gray-50 animate-pulse"
               ></div>
             ))
-            : products.map((product) => (
+            : products?.map((product) => (
               <div
                 key={product._id || product.id}
                 className="min-w-[220px] max-w-[240px] flex-shrink-0"
